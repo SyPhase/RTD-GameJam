@@ -3,11 +3,14 @@
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 #
 /RTD/[Ll]ibrary/
+RTD/[Ll]ibrary/
 /RTD/[Tt]emp/
 /RTD/[Oo]bj/
+RTD/[Oo]bj/
 /RTD/[Bb]uild/
 /RTD/[Bb]uilds/
 /RTD/[Ll]ogs/
+RTD/[Ll]ogs/
 /RTD/[Uu]ser[Ss]ettings/
 
 # MemoryCaptures can get excessive in size.
