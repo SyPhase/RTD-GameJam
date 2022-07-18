@@ -4,6 +4,7 @@
 #
 /RTD/[Ll]ibrary/
 RTD/[Ll]ibrary/
+/[Ll]ibrary/
 /RTD/[Tt]emp/
 /RTD/[Oo]bj/
 RTD/[Oo]bj/
@@ -11,6 +12,7 @@ RTD/[Oo]bj/
 /RTD/[Bb]uilds/
 /RTD/[Ll]ogs/
 RTD/[Ll]ogs/
+/[Ll]ogs/
 /RTD/[Uu]ser[Ss]ettings/
 
 # MemoryCaptures can get excessive in size.
@@ -73,3 +75,4 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /RTD/[Aa]ssets/[Ss]treamingAssets/aa.meta
 /RTD/[Aa]ssets/[Ss]treamingAssets/aa/*
+RTD/Library/
