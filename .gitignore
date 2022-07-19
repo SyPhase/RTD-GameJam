@@ -76,3 +76,11 @@ crashlytics-build.properties
 /RTD/[Aa]ssets/[Ss]treamingAssets/aa.meta
 /RTD/[Aa]ssets/[Ss]treamingAssets/aa/*
 RTD/Library/
+RTD/Library/ArtifactDB
+RTD/Library/CurrentLayout-default.dwlt
+RTD/Library/InspectorExpandedItems.asset
+RTD/Library/SceneVisibilityState.asset
+RTD/Library/ScriptAssemblies/Assembly-CSharp.dll
+RTD/Library/SourceAssetDB
+RTD/Library/StateCache/SceneView/36/36a90fe0c64f4c5772c455014f731b3b.json
+RTD/Logs/ApiUpdaterCheck.txt
