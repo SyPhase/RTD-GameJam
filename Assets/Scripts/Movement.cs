@@ -138,21 +138,13 @@ public class Movement : MonoBehaviour
         if (_isGrounded && _rigidbody.velocity.y < 0.01f)
         {
             // Plays sound only if input direction is opposite of velocity direction
-            if((_movementValue > 0 && _rigidbody.velocity.x < -2) || (_movementValue < 0 && _rigidbody.velocity.x > 2))
+            if((_movementValue > 0 && _rigidbody.velocity.x < -3) || (_movementValue < 0 && _rigidbody.velocity.x > 3))
             {
                 if (!_playerAudioSource.isPlaying)
                 {
                     _playerAudioSource.PlayOneShot(_slideSFX); // plays slideSFX
                 }
             }
-            //else
-            //{
-            //    audioSource.Stop();
-            //}
         }
-        //else
-        //{
-        //    audioSource.Stop();
-        //}
     }
 }
