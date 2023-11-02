@@ -24,7 +24,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "QuitGame",
+                    "name": "Quit",
                     "type": "Button",
                     "id": "8d355f24-65a2-4552-b7eb-ab70b7c2d533",
                     "expectedControlType": "Button",
@@ -173,7 +173,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "QuitGame",
+                    "action": "Quit",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

@@ -46,7 +46,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""QuitGame"",
+                    ""name"": ""Quit"",
                     ""type"": ""Button"",
                     ""id"": ""8d355f24-65a2-4552-b7eb-ab70b7c2d533"",
                     ""expectedControlType"": ""Button"",
@@ -195,7 +195,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""QuitGame"",
+                    ""action"": ""Quit"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -807,7 +807,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
         m_Player_Flap = m_Player.FindAction("Flap", throwIfNotFound: true);
-        m_Player_QuitGame = m_Player.FindAction("QuitGame", throwIfNotFound: true);
+        m_Player_Quit = m_Player.FindAction("Quit", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -881,14 +881,14 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Movement;
     private readonly InputAction m_Player_Flap;
-    private readonly InputAction m_Player_QuitGame;
+    private readonly InputAction m_Player_Quit;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
         public PlayerActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
         public InputAction @Flap => m_Wrapper.m_Player_Flap;
-        public InputAction @QuitGame => m_Wrapper.m_Player_QuitGame;
+        public InputAction @Quit => m_Wrapper.m_Player_Quit;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -904,9 +904,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Flap.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFlap;
                 @Flap.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFlap;
                 @Flap.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFlap;
-                @QuitGame.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuitGame;
-                @QuitGame.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuitGame;
-                @QuitGame.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuitGame;
+                @Quit.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuit;
+                @Quit.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuit;
+                @Quit.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuit;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -917,9 +917,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Flap.started += instance.OnFlap;
                 @Flap.performed += instance.OnFlap;
                 @Flap.canceled += instance.OnFlap;
-                @QuitGame.started += instance.OnQuitGame;
-                @QuitGame.performed += instance.OnQuitGame;
-                @QuitGame.canceled += instance.OnQuitGame;
+                @Quit.started += instance.OnQuit;
+                @Quit.performed += instance.OnQuit;
+                @Quit.canceled += instance.OnQuit;
             }
         }
     }
@@ -1078,7 +1078,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnFlap(InputAction.CallbackContext context);
-        void OnQuitGame(InputAction.CallbackContext context);
+        void OnQuit(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
