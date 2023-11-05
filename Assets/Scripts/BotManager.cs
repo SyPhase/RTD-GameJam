@@ -30,22 +30,36 @@ public class BotManager : MonoBehaviour
 
     IEnumerator SpawnBots(int numberOfBotsToSpawn)
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
 
         for (int i = 0; i < numberOfBotsToSpawn; i++)
         {
+            // Wait before activating the next bot
+            yield return new WaitForSeconds(1f);
+
+            // Get a free spawn point's index
             int spawnIndex = GetFreeSpawnPoint();
 
+            // If no spawns are free, try again
             if (spawnIndex < 0)
             {
                 i--;
                 continue;
             }
 
+            // Get a bot from the pool
             BotLogic currentBot = GetPooledBot();
 
+            // If all bots are in play, stop spawning bots
+            if (currentBot == null)
+            {
+                yield break;
+            }
+
+            // Move currentBot to the free spawn
             currentBot.transform.position = _spawnPoints[spawnIndex].transform.position;
 
+            // Choose a random direction for the bot to go
             float direction;
             if (Random.value > 0.5f)
             {
@@ -57,9 +71,8 @@ public class BotManager : MonoBehaviour
             }
             currentBot.SetTargetDirection(direction);
 
+            // Activate the bot
             currentBot.gameObject.SetActive(true);
-
-            yield return new WaitForSeconds(1f);
         }
     }
 

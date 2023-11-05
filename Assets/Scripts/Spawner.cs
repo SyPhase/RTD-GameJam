@@ -26,7 +26,10 @@ public class Spawner : MonoBehaviour
 
     public bool IsAvailable()
     {
-        StartCoroutine(SpawnCooldown());
+        if (_isUnobstructed && _isNotOnCooldown)
+        {
+            StartCoroutine(SpawnCooldown());
+        }
 
         return _isUnobstructed && _isNotOnCooldown;
     }

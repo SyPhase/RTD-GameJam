@@ -19,9 +19,6 @@ public class BotLogic : MonoBehaviour
 
     void FixedUpdate()
     {
-        // Handle Horizontal movement
-        _bot.ChangeMovementValue(_targetDirection);
-
         // Handle flapping to try and reach a target height
         if ((_nextFlapTime <= Time.fixedTime) && (transform.position.y <= _nextFlapHeight))
         {
@@ -35,6 +32,7 @@ public class BotLogic : MonoBehaviour
     // Set between -1 and 1 (-1 means left, 1 means right)
     public void SetTargetDirection(float targetDirection)
     {
+        // Ensure the value is between -1 and 1
         if (targetDirection > 1)
         {
             _targetDirection = 1;
@@ -47,6 +45,9 @@ public class BotLogic : MonoBehaviour
         {
             _targetDirection = targetDirection;
         }
+
+        // Handle Horizontal movement
+        _bot.ChangeMovementValue(_targetDirection);
     }
 
     // Set between 1.6 and 9.75 (1.6 is lowest, 9.75 is highest)
