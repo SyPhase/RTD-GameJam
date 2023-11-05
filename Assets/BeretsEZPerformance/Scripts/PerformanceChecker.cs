@@ -20,13 +20,13 @@ public class PerformanceChecker : MonoBehaviour
     [SerializeField] TextMeshProUGUI bestFPSText;
     [SerializeField] TextMeshProUGUI worstFPSText;
 
-    float invisTimer = 0;
-    float invisWorstTimer = 0;
-    int invisPointer;
-    float bestFPS;
+    float invisTimer = 0f;
+    float invisWorstTimer = 0f;
+    int invisPointer = 0;
+    float bestFPS = 0f;
     //big value so it auto updates the first time the values get calculated
-    float worstFPS = 10000;
-    float avarageFPS;
+    float worstFPS = 10000f;
+    float avarageFPS = 0f;
     //used for stroning recent values to calculate an avarage
     List<float> lastTenFPS = new List<float>();
 
