@@ -1,0 +1,7 @@
+A free to use performance counter tool made by Volutedberet
+Feel free to use this in any personal and commercial project, no need to credit me!
+
+Features: 
+-Drag and drop prefab with everything set up
+-Showing Current fps, avarage fps, best and worst fps
+-Coloring the avarage and the current fps based on where they fall between the best and the worst fps
