@@ -23,6 +23,8 @@ public class Bot : MonoBehaviour
     Rigidbody _rigidbody;
     float _movementValue = 0;
 
+    Vector3 _lastPosition;
+
     void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
@@ -30,6 +32,15 @@ public class Bot : MonoBehaviour
 
     void FixedUpdate()
     {
+        // If stuck
+        if (_lastPosition == transform.position)
+        {
+            Flap();
+        }
+
+        // Cache last position
+        _lastPosition = transform.position;
+
         // Horizontal movement
         _rigidbody.AddRelativeForce(_movementValue * _horizontalMoveForce * _rigidbody.mass, 0f, 0f); // adds horizontal force for movement
 
@@ -72,8 +83,6 @@ public class Bot : MonoBehaviour
         {
             _rigidbody.AddRelativeForce(_movementValue * _horizontalFlapControl * _rigidbody.mass, 0f, 0f);
         }
-
-        print("Flap!");
     }
 
     // Set a value between -1 and 1 (left to right)

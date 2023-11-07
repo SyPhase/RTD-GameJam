@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class BotManager : MonoBehaviour
 {
+    [SerializeField] int _botsToSpawn = 1;
+
     [SerializeField] List<BotLogic> _bots = new List<BotLogic>();
     [SerializeField] List<Spawner> _spawnPoints = new List<Spawner>();
 
@@ -11,8 +14,15 @@ public class BotManager : MonoBehaviour
     [SerializeField] bool _canExpand = false;
     [SerializeField] int _botsToPool = 10;
 
+    bool _isSpawningBots = false;
+    int _roundCount = 1;
+
+    TMP_Text _roundText;
+
     void Start()
     {
+        _roundText = FindObjectOfType<TMP_Text>();
+
         for (int i = 0; i < _botsToPool; i++)
         {
             // Make new Bots as children of this
@@ -25,11 +35,14 @@ public class BotManager : MonoBehaviour
             _bots.Add(currentBot.GetComponent<BotLogic>());
         }
 
-        StartCoroutine(SpawnBots(6));
+        StartCoroutine(SpawnBots(_botsToSpawn));
     }
 
     IEnumerator SpawnBots(int numberOfBotsToSpawn)
     {
+        // Bot Spawning status to true
+        _isSpawningBots = true;
+
         yield return new WaitForSeconds(2f);
 
         for (int i = 0; i < numberOfBotsToSpawn; i++)
@@ -63,17 +76,40 @@ public class BotManager : MonoBehaviour
             float direction;
             if (Random.value > 0.5f)
             {
-                direction = 1f;
+                direction = 0.65f;
             }
             else
             {
-                direction = -1f;
+                direction = -0.65f;
             }
             currentBot.SetTargetDirection(direction);
+
+            // Choose random height for bot to focus
+            float height;
+            int randomValue = Random.Range(1, 4);
+            if (randomValue == 1)
+            {
+                height = 2.5f;
+            }
+            else if(randomValue == 2)
+            {
+                height = 6.2f;
+            }
+            else
+            {
+                height = 9f;
+            }
+            currentBot.SetTargetHeight(height); // 2.5f, 6.2f, 9f
 
             // Activate the bot
             currentBot.gameObject.SetActive(true);
         }
+
+        // Bot Spawning Status to false
+        _isSpawningBots = false;
+
+        // Increment number of bots next wave
+        _botsToSpawn++;
     }
 
     int GetFreeSpawnPoint()
@@ -114,10 +150,35 @@ public class BotManager : MonoBehaviour
 
             return _bots[_bots.Count];
         }
-        else
+        else // Cannot expand list and all bots are active
         {
             return null;
         }
+    }
+
+    public void TryStartNewWave()
+    {
+        // Check if bots are still being spawned
+        if (_isSpawningBots)
+        {
+            return;
+        }
+
+        // Check if all bots are diabled
+        for (int i = 0; i < _bots.Count; i++)
+        {
+            if (_bots[i].gameObject.activeInHierarchy)
+            {
+                return;
+            }
+        }
+
+        // Add 1 to round count
+        _roundCount++;
+        _roundText.text = "Round: " + _roundCount;
+
+        // If all bots are diabled, start new wave
+        StartCoroutine(SpawnBots(_botsToSpawn));
     }
 
     public void DisableBots()

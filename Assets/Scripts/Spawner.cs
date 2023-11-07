@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    bool _isUnobstructed = true;
-    bool _isNotOnCooldown = true;
+    [SerializeField] bool _isUnobstructed = true;
+    [SerializeField] bool _isNotOnCooldown = true;
 
     int _triggersEntered = 0;
 
@@ -29,9 +29,11 @@ public class Spawner : MonoBehaviour
         if (_isUnobstructed && _isNotOnCooldown)
         {
             StartCoroutine(SpawnCooldown());
+
+            return true;
         }
 
-        return _isUnobstructed && _isNotOnCooldown;
+        return false;
     }
 
     IEnumerator SpawnCooldown()

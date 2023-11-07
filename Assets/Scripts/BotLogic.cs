@@ -12,9 +12,11 @@ public class BotLogic : MonoBehaviour
     float _nextFlapTime = 0f;
     float _nextFlapHeight = 0f;
 
-    void Start()
+    void Awake()
     {
         _bot = GetComponent<Bot>();
+
+        _nextFlapHeight = 0.5f + _targetHeight;
     }
 
     void FixedUpdate()
@@ -55,11 +57,11 @@ public class BotLogic : MonoBehaviour
     {
         if (targetHeight > 9.75f)
         {
-            _targetHeight = 9.75f;
+            _targetHeight = 9f;
         }
         else if (targetHeight < 1.6f)
         {
-            _targetHeight = 1.6f;
+            _targetHeight = 2f;
         }
         else
         {

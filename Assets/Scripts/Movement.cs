@@ -141,7 +141,7 @@ public class Movement : MonoBehaviour
             {
                 if (!_playerAudioSource.isPlaying)
                 {
-                    _playerAudioSource.PlayOneShot(_slideSFX); // plays slideSFX
+                    _playerAudioSource.PlayOneShot(_slideSFX, 0.3f); // plays slideSFX
                 }
             }
         }

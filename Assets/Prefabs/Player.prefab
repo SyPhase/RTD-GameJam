@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 30b74921eae99ac44a04b8823adbc526, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -156,6 +156,8 @@ GameObject:
   - component: {fileID: 1247131598142703607}
   - component: {fileID: 1247131598142703600}
   - component: {fileID: 1247131598142703601}
+  - component: {fileID: 229927133405256820}
+  - component: {fileID: 3237372741874065413}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -280,7 +282,7 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: bdfe0060-ffbf-4697-8857-d1e3798156d8
     m_ActionName: Player/Flap[/Keyboard/space]
-  m_NeverAutoSwitchControlSchemes: 1
+  m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
@@ -417,3 +419,27 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &229927133405256820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1247131598142703604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bb2b16ac063ec34e96c155a4c4ce0cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3237372741874065413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1247131598142703604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc7808e3db8aaf8479fb1a1b779366e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
